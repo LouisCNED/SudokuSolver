@@ -73,6 +73,7 @@ def insert(win, position):
                 if (grid_original[i - 1][j - 1] != 0):
                     return
                 if (event.key == 48):
+                    print('48')
                     grid[i - 1][j - 1] = event.key - 48
                     pygame.draw.rect(win, background_color, (
                     position[0] * 50 + buffer, position[1] * 50 + buffer, 50 - 2 * buffer, 50 - 2 * buffer))
@@ -85,6 +86,7 @@ def insert(win, position):
                     win.blit(value, (position[0] * 50 + 15, position[1] * 50))
                     grid[i - 1][j - 1] = event.key - 48
                     pygame.display.update()
+                    print('-48')
                     return
                 return
 
@@ -130,7 +132,6 @@ def verif():
                             print(grid[x+f][y+g], x+f, y+g)
                             if fg > 1:
                                 return False
-
     return True
 
 def main(background_color):
@@ -167,7 +168,7 @@ def main(background_color):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     if verif():
-                        main_n(background_color)
+                        grid_draw(background_color)
         pygame.display.update()
     pygame.display.update()
 
@@ -240,7 +241,7 @@ def sudoku_solver(win, background_color):
     solved = 1
 
 
-def main_n(background_color):
+def grid_draw(background_color):
     pygame.init()
     win = pygame.display.set_mode((WIDTH, WIDTH))
     pygame.display.set_caption("Sudoku")
